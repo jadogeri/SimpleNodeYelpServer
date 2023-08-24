@@ -1,5 +1,5 @@
 
-
+const bodyparser = require('body-parser')
 const api = require('./api/yelp.js');
 const express = require("express");
 const cors = require("cors");
@@ -8,6 +8,9 @@ const yelp = api.axiosInstance();
 
 app.use(cors());
 app.use(express.json());
+app.use(bodyparser.json({limit:'10mb'}))
+app.use(bodyparser.urlencoded({extended:true,limit:'10mb'}))
+
 
 app.get("/search/:searchTerm", async (req, res) => {
     try {
