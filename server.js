@@ -8,15 +8,15 @@ const yelp = api.axiosInstance();
 
 app.use(cors());
 app.use(express.json());
-app.use(bodyparser.json({limit:'10mb'}))
-app.use(bodyparser.urlencoded({extended:true,limit:'10mb'}))
+app.use(bodyparser.json({ limit: '10mb' }))
+app.use(bodyparser.urlencoded({ extended: true, limit: '10mb' }))
 
 
 app.get("/search/:searchTerm", async (req, res) => {
     try {
         const response = await yelp.get('/search', {
             params: {
-                limit: 25,
+                limit: 50,
                 location: "new orleans",
                 term: req.params.searchTerm
             }
