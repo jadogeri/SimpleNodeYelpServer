@@ -16,7 +16,7 @@ app.get("/search/:searchTerm", async (req, res) => {
     try {
         const response = await yelp.get('/search', {
             params: {
-                limit: 75,
+                limit: 50,
                 location: "new orleans",
                 term: req.params.searchTerm
             }
